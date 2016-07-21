@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <style>
+          body {
+              padding-top: 50px;
+              padding-bottom: 20px;
+          }
+      </style>
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="css/main.css">
+
+      <!--<script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
+  </head>
+  <body>
+      <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"></nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-lg-2">
+          <nav class="navbar navbar-default navbar-fixed-side">
+            <a class="navbar-brand" href="#">Cat Clicker</a>
+            <ul data-bind="foreach:cats" class="nav navbar-nav">
+              <li class="col-sm-12">
+                <a class="row" data-bind="click:$parent.setCurrentCat" href="">
+                  <span class="col-xs-8 col-sm-8 col-md-8" data-bind="text:name"></span>
+                  <span class="badge" data-bind="text:clickCount"></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="btn btn-warning" data-bind="click: open_form_admin">
+            Admin
+          </button>
+          <form class="form" data-bind="visible: form_admin_open, with: formCat = currentCat(), submit:save_form">
+            <hr />
+            <label class="input-label">Name</label>
+            <input class="form-control input-sm" data-bind="value: name" type=text></input><br />
+            <label class="input-label">Clicks Num</label>
+            <input class="form-control input-sm" data-bind="value: clickCount" type=text></input><br />
+            <button class="btn btn-default input-sm" data-bind="click: $parent.close_form_admin">Cancel</button>
+            <button class="btn btn-success input-sm" type="submit">Save</button>
+          </form>
+        </div>
+        <div class="col-sm-9 col-lg-10">
+          <div class="text-center" data-bind="with: currentCat">
+            <h2>
+              <span data-bind="text:name"></span><br/>
+              <small data-bind="text: level"></small><br/>
+            </h2>
+            <img src="" data-bind="click:$parent.incrementCounter, attr : {src:imgSrc}" alt="cat"></img>
+            <br /><br />
+            <p>Click count</p>
+            <h2 data-bind="text:clickCount"></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript' src='js/vendor/knockout-3.4.0.js'></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
